@@ -18,9 +18,11 @@ class Game {
 
     func makeMove(row: Int, column: Int) {
         guard board[row][column] == " " else { return }
-        board[row][column] = currentPlayer == .x ? "X" : "O"
+        board[row][column] = currentPlayer.rawValue
         checkForWinner()
-        currentPlayer = (currentPlayer == .x) ? .o : .x
+        if winner == nil && !isDraw() {
+            currentPlayer = (currentPlayer == .x) ? .o : .x
+        }
     }
 
     private func checkForWinner() {
@@ -30,6 +32,7 @@ class Game {
                 board[1][col] == currentPlayer.rawValue &&
                 board[2][col] == currentPlayer.rawValue {
                 winner = currentPlayer
+                return
             }
         }
 
@@ -39,6 +42,7 @@ class Game {
                 board[row][1] == currentPlayer.rawValue &&
                 board[row][2] == currentPlayer.rawValue {
                 winner = currentPlayer
+                return
             }
         }
 
@@ -47,12 +51,26 @@ class Game {
             board[1][1] == currentPlayer.rawValue &&
             board[2][2] == currentPlayer.rawValue {
             winner = currentPlayer
+            return
         }
 
         if board[0][2] == currentPlayer.rawValue &&
             board[1][1] == currentPlayer.rawValue &&
             board[2][0] == currentPlayer.rawValue {
             winner = currentPlayer
+            return
         }
+    }
+
+    func isDraw() -> Bool {
+        guard winner == nil else { return false }
+
+        for row in board {
+            if row.contains(" ") {
+                return false // There is still an empty spot
+            }
+        }
+
+        return true
     }
 }
