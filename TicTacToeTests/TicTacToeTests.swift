@@ -82,4 +82,22 @@ final class TicTacToeTests: XCTestCase {
         XCTAssertNil(game.winner, "Winner should be nil in a draw scenario.")
         XCTAssertTrue(game.isDraw(), "The game should be a draw.")
     }
+
+    func testGamePlaysInBotMode() {
+        let game = Game()
+        var moveCount = 0
+
+        while game.winner == nil && !game.isDraw() {
+            let row = Int.random(in: 0..<3)
+            let column = Int.random(in: 0..<3)
+
+            // Ensure the move is valid
+            if game.board[row][column] == " " {
+                game.makeMove(row: row, column: column)
+                moveCount += 1
+            }
+        }
+
+        XCTAssertTrue(game.isDraw())
+    }
 }
