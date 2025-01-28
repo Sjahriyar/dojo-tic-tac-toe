@@ -17,4 +17,9 @@ final class TicTacToeTests: XCTestCase {
                              [" ", " ", " "]]
         XCTAssertEqual(game.board, expectedBoard)
     }
+
+    func testGameStartsWithPlayerX() {
+        let game = Game()
+        XCTAssertEqual(game.currentPlayer, .x)
+    }
 }
