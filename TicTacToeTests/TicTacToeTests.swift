@@ -28,4 +28,11 @@ final class TicTacToeTests: XCTestCase {
         game.makeMove(row: 0, column: 0) // X
         XCTAssertEqual(game.board[0][0], "X")
     }
+
+    func testTurnAlternatesAfterMove() {
+        let game = Game()
+        XCTAssertEqual(game.currentPlayer, .x)
+        game.makeMove(row: 0, column: 0) // X
+        XCTAssertEqual(game.currentPlayer, .o)
+    }
 }
