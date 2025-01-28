@@ -56,4 +56,14 @@ final class TicTacToeTests: XCTestCase {
         game.makeMove(row: 1, column: 2) // O
         XCTAssertEqual(game.winner, .o)
     }
+
+    func testGameDetectsWinnerWhenPlayerXWinsWithDiagonalLine() {
+        let game = Game()
+        game.makeMove(row: 0, column: 0) // X
+        game.makeMove(row: 0, column: 1) // O
+        game.makeMove(row: 1, column: 1) // X
+        game.makeMove(row: 1, column: 0) // O
+        game.makeMove(row: 2, column: 2) // X
+        XCTAssertEqual(game.winner, .x)
+    }
 }
