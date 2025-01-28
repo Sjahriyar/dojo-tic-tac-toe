@@ -66,4 +66,20 @@ final class TicTacToeTests: XCTestCase {
         game.makeMove(row: 2, column: 2) // X
         XCTAssertEqual(game.winner, .x)
     }
+
+    func testGameDetectsDrawWhenBoardIsFullAndNoWinner() {
+        let game = Game()
+        game.makeMove(row: 0, column: 0) // X
+        game.makeMove(row: 0, column: 1) // O
+        game.makeMove(row: 0, column: 2) // X
+        game.makeMove(row: 1, column: 1) // O
+        game.makeMove(row: 1, column: 0) // X
+        game.makeMove(row: 1, column: 2) // O
+        game.makeMove(row: 2, column: 1) // X
+        game.makeMove(row: 2, column: 0) // O
+        game.makeMove(row: 2, column: 2) // X
+
+        XCTAssertNil(game.winner, "Winner should be nil in a draw scenario.")
+        XCTAssertTrue(game.isDraw(), "The game should be a draw.")
+    }
 }
