@@ -22,4 +22,10 @@ final class TicTacToeTests: XCTestCase {
         let game = Game()
         XCTAssertEqual(game.currentPlayer, .x)
     }
+
+    func testPlayerXCanPlaceMarker() {
+        let game = Game()
+        game.makeMove(row: 0, column: 0) // X
+        XCTAssertEqual(game.board[0][0], "X")
+    }
 }
