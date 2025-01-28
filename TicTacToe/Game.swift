@@ -32,5 +32,14 @@ class Game {
                 winner = currentPlayer
             }
         }
+
+        // Check horizontal rows
+        for row in 0..<3 {
+            if board[row][0] == currentPlayer.rawValue &&
+                board[row][1] == currentPlayer.rawValue &&
+                board[row][2] == currentPlayer.rawValue {
+                winner = currentPlayer
+            }
+        }
     }
 }
