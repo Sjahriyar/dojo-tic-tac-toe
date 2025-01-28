@@ -18,5 +18,6 @@ class Game {
     func makeMove(row: Int, column: Int) {
         guard board[row][column] == " " else { return }
         board[row][column] = currentPlayer == .x ? "X" : "O"
+        currentPlayer = (currentPlayer == .x) ? .o : .x
     }
 }
