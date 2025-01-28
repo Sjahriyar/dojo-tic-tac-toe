@@ -14,4 +14,9 @@ class Game {
                       [" ", " ", " "]]
         self.currentPlayer = .x
     }
+
+    func makeMove(row: Int, column: Int) {
+        guard board[row][column] == " " else { return }
+        board[row][column] = currentPlayer == .x ? "X" : "O"
+    }
 }
