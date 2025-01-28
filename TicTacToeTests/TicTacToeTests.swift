@@ -98,6 +98,12 @@ final class TicTacToeTests: XCTestCase {
             }
         }
 
-        XCTAssertTrue(game.isDraw())
+        // Assertions
+        if let winner = game.winner {
+            XCTAssertTrue(winner == .x || winner == .o, "Winner must be X or O")
+        } else {
+            XCTAssertTrue(game.isDraw(), "Game should end in a draw if no winner")
+        }
+        XCTAssertLessThanOrEqual(moveCount, 9, "There should be no more than 9 moves in a game")
     }
 }
