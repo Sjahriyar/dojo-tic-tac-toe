@@ -41,5 +41,18 @@ class Game {
                 winner = currentPlayer
             }
         }
+
+        // Check diagonals
+        if board[0][0] == currentPlayer.rawValue &&
+            board[1][1] == currentPlayer.rawValue &&
+            board[2][2] == currentPlayer.rawValue {
+            winner = currentPlayer
+        }
+
+        if board[0][2] == currentPlayer.rawValue &&
+            board[1][1] == currentPlayer.rawValue &&
+            board[2][0] == currentPlayer.rawValue {
+            winner = currentPlayer
+        }
     }
 }
